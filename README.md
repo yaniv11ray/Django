@@ -1,0 +1,1 @@
+Django hands on
