@@ -1,0 +1,41 @@
+{% extends 'main.html'%} 
+{% block content %}
+<h2>Form Page</h2>
+<div>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <input type="text" name="q" />
+    <button type="submit">submit</button>
+  </form>
+</div>
+
+{%if data %}
+<div class="container my-6">
+  <h2>Here is your search Result</h2><br><br>
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">EmployeeName</th>
+        <th scope="col">DepartmentName</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for detail in data %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{detail.employeename}}</td>
+        <td>{{detail.departmentname}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%else%}
+<h2>Search didnt fetch any result !</h2>
+
+{%endif %}
+
+
+{% endblock content %}

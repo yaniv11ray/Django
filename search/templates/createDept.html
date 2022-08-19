@@ -1,0 +1,16 @@
+{% extends 'main.html'%} 
+{% block content %}
+<div class="home-container">
+    <center>
+    <div>
+<h2> Create Department Page</h2><br><br> </center>
+    </div>
+<form method="POST" action="">
+{% csrf_token%}
+{{form.as_p}}
+    
+<input type="submit" name="submit">
+</form>
+</div>
+{% endblock content %}
+

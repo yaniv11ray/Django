@@ -1,0 +1,30 @@
+{% extends 'main.html' %} {%block content%}
+
+<div class="container my-6">
+  <h2>Department Details</h2><br><br>
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">SNo</th>
+        <th scope="col">DepartmentId</th>
+        <th scope="col">DepartmentName</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for department in departments %}
+      <tr class="table-active">
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{department.departmentid}}</td>
+        <td>{{department.departmentname}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div>
+    <a href="/createDepartment"><h2>Create Department</h2></a>
+</div>
+</div>
+
+  
+{% endblock content%}

@@ -1,0 +1,16 @@
+
+{% block content%}
+{% if  request.user.is_authenticated %}
+<div>
+<form method="POST" class="from-group" autocomplete="off">
+    {% csrf_token %}
+    <p>Want to logout ?</p>
+    <button type="submit">Yes</button>
+</form>
+</div>
+{% else %}
+    
+<p>You are logged out , Want to login ? <br><a href="/login">Login</a></p>
+{% endif %}
+
+{% endblock %}    

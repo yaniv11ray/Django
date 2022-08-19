@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+
+{%block content%}
+<!--<style>
+    .home-container{
+        display:grid;
+        grid-template-columns: 1fr 3fr ;
+
+    }
+</style>-->
+
+<div class="alert alert-dismissible alert-secondary">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Welcome back ,{{user.username|upper}}</strong>
+  </div>
+<div class="home-container">
+    <center>
+    <div>
+        <h3>Employee Details</h3>
+        
+      
+
+        
+        <table class="table">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">employee_id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">department_id</th>
+                    <th scope="col">created</th>
+                    <th scope="col">updated</th>
+                </tr>
+            </thead>
+            
+        
+            {% for employee in employees %}
+            <tbody>
+                <tr class="table-info">
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td> {{employee.employeeid}}</td>
+                    <td>{{employee.employeename}}</td>
+                    <td> {{employee.departmentid}}</td>
+                    <td> {{employee.created}}</td>
+                    <td> {{employee.updated}}</td>
+                </tr>
+            </tbody>
+            
+            {%endfor%}
+        </table>
+   
+   
+    </div><br><br><hr/>
+    <div>
+    
+    <table class="table">
+        <div>
+            <h3>Department Details</h3>
+            </hr>
+       
+        </div>
+        <div>
+        <table class="table">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">department_id</th>
+                    <th scope="col">created</th>
+                    <th scope="col">updated</th>
+                </tr>
+            </thead>
+        {% for department in departments %}
+        <tbody>
+            <tr class="table-light">
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{department.departmentname}}</td>
+                <td> {{department.departmentid}}</td>
+                <td> {{department.created}}</td>
+                <td> {{department.updated}}</td>
+            </tr>
+        </tbody>
+         
+        {% endfor %}
+    </table>
+</center>   
+    </div>    
+{% endblock content%}

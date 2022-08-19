@@ -1,0 +1,31 @@
+{% extends 'main.html'%} 
+{%block content%}
+
+<div class="container my-6">
+  <h2>Employee Details</h2>
+  <br/><br />
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">SNo</th>
+        <th scope="col">EmployeeId</th>
+        <th scope="col">EmployeeName</th>
+        <th scope="col">DepartmentName</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+      <tr class="table-success">
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{employee.employeeid}}</td>
+        <td>{{employee.employeename}}</td>
+        <td>{{employee.departmentid}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div>
+        <a href="/createEmployee"><h2>Create Employee</h2></a>
+  </div>
+</div>
+{% endblock content%}

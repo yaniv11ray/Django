@@ -1,0 +1,33 @@
+{% block content%}
+<div>
+  <h2>Register Page</h2>
+  <form method="POST" class="from-group" autocomplete="off">
+    {% csrf_token %} 
+    {%if form %}
+      {{form.as_p}}
+      <button type="submit" class="btn btn-success">Submit</button><br /><br />
+    {% else %}
+     
+      
+    
+      {% for key,value in error %}
+      {{ key|escape }} : {{ value|escape }}
+      {% endfor %}
+   
+
+    {%endif%}
+
+    <!--     {% for data in form%}
+
+    {{data.}}
+
+    {% endfor %}
+-->
+
+    <br />
+
+    <p>Registration completed ? <a href="/login">Click to Sign In</a></p>
+  </form>
+</div>
+
+{%endblock%}

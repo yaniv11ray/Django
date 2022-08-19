@@ -1,0 +1,51 @@
+{% extends 'main.html'%} {% block content %}
+
+<div class="container my-6">
+    <h2><center>Search Page</center></h2><br><br>
+  <form method="POST" action="" autocomplete="off"> <!--autocomplete="off" used to disable prepoluating input field -->
+    {% csrf_token %}
+    <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">Enter EmployeeId below to search </label>
+        <input type="text" name ="q" class="form-control" id="validationCustom03" required>
+        <div class="invalid-feedback">
+          Please provide a valid input.
+        </div>
+    </div><br>
+   
+    <!--<input type="text" name="q" />-->
+    <button type="submit">Search</button>
+  </form>
+</div>
+<br>
+
+{% if data %}
+<div class="container my-6">
+  <h2>Here is your search Result</h2><br><br>
+
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">name</th>
+        <th scope="col">department_name</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for detail in data %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{detail.employeename}}</td>
+        <td>{{detail.departmentname}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+   
+</div>
+
+{% endif%} 
+
+
+{% endblock content %}

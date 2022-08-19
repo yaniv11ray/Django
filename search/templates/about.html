@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+
+
+{%block content%}
+
+
+
+Welcome , {{request.user|upper}}<br><br>
+{% load tz %}
+
+
+
+<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Last login : {{user.last_login}} (GMT)</strong>
+      
+      <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Hello, {{request.user|upper}}!<br>This is a toast message.<br><br> <h5>Message can be closed now .</h5>
+    </div>
+  </div>
+
+<br>
+<p> Username: {{ user.username|upper }}
+<p>Session Started at: {{ user.last_login }}
+  <br> 
+  <ul class="nav navbar-nav navbar-right">
+    {% if user.is_authenticated %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Click to LogOut </a></li>
+    {% else %}
+    <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Click to LogIn </a></li>
+    {% endif %}
+  </ul>
+<br>
+<div>
+  <br><br>
+<center><h3> User Details<h3></center><hr>
+  <table class="table">
+    <thead>
+        <tr class="table-info">
+            
+            <th scope="col">username</th>
+            <th scope="col">first_name</th>
+            <th scope="col">last_name</th>
+            <th scope="col">email</th>
+            <th scope="col">date_joined</th>
+            <th scope="col">last_login</th>
+        </tr>
+    </thead>
+    
+
+    {% for user in users %}
+    <tbody>
+        <tr class="table-dark">
+            <th scope="row"> {{user.username}}</th>
+            <td>  {{user.first_name}}</td>
+            <td> {{user.last_name}}</td>
+            <td>  {{user.email}}</td>
+            <td>  {{user.date_joined}}</td>
+            <td>  {{user.last_login}}</td>
+        </tr>
+    </tbody>
+    
+    {%endfor%}
+</table>
+ 
+
+</div>
+{% endblock%}
+
+ 
+
+ 
+
